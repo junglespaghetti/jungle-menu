@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "Jungle manu",
+  "version": "1.0.0",
+  "description": "",
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "background",
+    "http://*/",
+    "https://*/"
+  ],
+  "background": {
+    "persistent": false,
+    "page": "background.html"
+  },
+  "icons": {
+    "16": "icon/new_logo_pink16.png",
+    "48": "icon/new_logo_pink48.png",
+    "128": "icon/new_logo_pink128.png"
+  },
+  "browser_action": {
+    "default_icon": "icon/new_logo_pink16.png",
+    "default_title": "Jungle menu",
+    "default_popup": "applications/popup.html"
+  },
+  "externally_connectable": {
+    "matches": [
+      "https://easy-indexeddb.glitch.me/*"
+    ],
+    "ids": [
+      "*"
+    ],
+    "accepts_tls_channel_id": false
+  },
+  "content_security_policy": "script-src 'self' https://translate.google.com/translate_a/element.js ; object-src 'self' ",
+  "web_accessible_resources": [
+    "applications/menus.html",
+    "applications/settings.html",
+    "applications/editor.html"
+  ]
+}
