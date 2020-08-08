@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="helper/pageHelper.js"></script>
+  <title>Settings</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="helper/applicationHelper.js"></script>
+  <script src="helper/helper.js"></script>
+</head>
+
+<body>
+  <div id="main-contents">
+    <form id="settings-form" name="settings_form">
+      <div>
+        <label id="use-command" class="multi-lang">Use menu command</label>
+      </div>
+      <div>
+        <select id="settings-command" name="settings_command">
+          <option id="command-desable" class="multi-lang" value="desable" selected>Desable</option>
+          <option id="command-enable" class="multi-lang" value="enable">Enable</option>
+          <option id="command-password" class="multi-lang" value="password">Use passord</option>
+        </select>
+      </div>
+      <div>
+        <label id="use-external" class="multi-lang lung-label">Use external</label>
+      </div>
+      <div>
+        <select id="settings-external" name="settings_external">
+          <option id="external-desable" class="multi-lang" value="desable" selected>Desable</option>
+          <option id="external-enable" class="multi-lang" value="enable">Enable</option>
+          <option id="external-password" class="multi-lang" value="password">Use assword</option>
+        </select>
+      </div>
+      <div>
+        <label id="use-password" class="multi-lang">Menu command password</label>
+      </div>
+      <input id="settings-password" name="settings_password" placeholder="{menu_command:{password:****"
+        style="width:95%;" />
+      <div style="margin-top:3px">
+        <button id="enter-button" class="multi-lang" type="button">
+          Enter
+        </button>
+        <button id="reset-button" class="multi-lang" type="button">
+          Reset
+        </button>
+        <button id="import-button" class="multi-lang" type="button">
+          import
+        </button>
+        <button id="export-button" class="multi-lang" type="button">
+          export
+        </button>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <a href="https://junglespaghetti.com/" target="_blank"><img border="0" src="images/janglespaghetti_title.png"
+        style="width:90%;max-width: 300px;" alt="ジャンスパ" /></a>
+  </footer>
+  <script src="settings/settings.js"></script>
+</body>
+
+</html>

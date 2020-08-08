@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="helper/pageHelper.js"></script>
+  <meta charset="utf-8" />
+  <title>Menus</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css" />
+  <link rel="stylesheet" href="lib/codemirror/theme/paraiso-light.css" />
+  <link rel="stylesheet" href="menus/menus.css" />
+  <script src="lib/codemirror/lib/codemirror.js"></script>
+  <script src="lib/codemirror/mode/javascript/javascript.js"></script>
+  <script src="lib/codemirror/mode/css/css.js"></script>
+  <script src="lib/codemirror/addon/display/autorefresh.js"></script>
+  <script src="helper/applicationHelper.js"></script>
+  <script src="helper/helper.js"></script>
+</head>
+
+<body>
+  <div id="main-contents">
+    <div id="google_translate_element"></div>
+    <form id="menu-form" name="menu_form">
+
+      <label id="id-label" class="multi-lang">Menu ID <a href="https://material.io/resources/icons/"
+          target="_blank"></a></label>
+      <input id="menuId" name="menu_id" list="menu-list" placeholder="Menu ID" style="width:95%;" /><datalist
+        id="menu-list"></datalist>
+      <label id="title-label" class="multi-lang">Menu title</label>
+      <input id="title" name="menu_title" placeholder="Display label title" style="width:95%;" />
+      <label id="menu-type-label" class="multi-lang">Menu type</label>
+      <div>
+        <select id="type" name="menu_type">
+          <option id="menu_type_normal" class="multi-lang" value="normal">normal</option>
+          <option id="menu_type_checkbox" class="multi-lang" value="checkbox">checkbox</option>
+          <option id="menu_type_radio" class="multi-lang" value="radio">radio</option>
+          <option id="menu_type_separator" class="multi-lang" value="separator">separator</option>
+        </select><label id="check-bool" class="multi-lang"> checked</label><input type="checkbox" id="nenu_checked"
+          name="menu_checked" />
+      </div>
+      <label id="parent-id-label" class="multi-lang">Parent ID</label>
+      <input id="parentId" name="menu_parentId" class="multi-lang" list="menu-list" placeholder="Parent menu id"
+        style="width:95%;" />
+
+      <div>
+        <span id="advanced-toggle-span"><i class="material-icons advanced-toggle-icon">menu</i><i
+            class="material-icons advanced-toggle-icon" style="display:none;">menu_open</i></span><span
+          id="toggle-advanced-span" class="multi-lang"><b>Advanced</b></span>
+      </div>
+
+      <div id="advanced" class="toggle-display-icon" style="display:none;">
+        <label id="context-label" class="multi-lang">Contexts</label>
+        <input id="menu-contexts" name="menu_contexts" placeholder="Comma separated" style="width:95%;" />
+        <label id="document-url-label" class="multi-lang">Document url patterns</label>
+        <div>
+          <button id="menu-documentUrlPatterns-button" class="multi-lang" type="button">
+            Add patterns
+          </button>
+        </div>
+        <ol id="menu-documentUrlPatterns" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+        <label id="target-url-label" class="multi-lang">Target url patterns</label>
+        <div>
+          <button id="menu-targetUrlPatterns-button" class="multi-lang" type="button">
+            Add patterns
+          </button>
+        </div>
+        <ol id="menu-targetUrlPatterns" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+      </div>
+
+      <div>
+        <span id="menuOption-toggle-span"><i class="material-icons menuOption-toggle-icon">menu</i><i
+            class="material-icons menuOption-toggle-icon" style="display:none;">menu_open</i></span><span
+          id="toggle-menuOption-span" class="multi-lang"><b>Menu option</b></span>
+      </div>
+
+      <div id="menuOption" class="toggle-display-icon" style="display:none;">
+        <label><a href="https://material.io/resources/icons/" target="_blank">Google material icon</a></label>
+        <input id="menuOption-icon" name="menuOption_icon" placeholder="Popup icon" style="width:95%;" />
+        <label id="popup-html-label" class="multi-lang">Popup html</label>
+        <div>
+          <textarea id="menuOption-htmlEdit" name="menuOption_htmlEdit" class="multi-lang"
+            style="width:100%;height:70px" placeholder="html"></textarea>
+        </div>
+        <label id="visible-label" class="multi-lang">Visible</label>
+        <div>
+          <label id="popup-visible-label" class="multi-lang">Popup menu</label><input type="checkbox"
+            id="menuOption-popupVisible" name="menuOption_popupVisible" checked />
+          <label id="context-visible-label" class="multi-lang">Context menu</label><input type="checkbox"
+            id="menu-visible" name="menu_visible" />
+        </div>
+      </div>
+
+      <div>
+        <span id="script-toggle-span"><i class="material-icons script-toggle-icon">menu</i><i
+            class="material-icons script-toggle-icon" style="display:none;">menu_open</i></span><span
+          id="toggle-manuScript-span" class="multi-lang"><b>Menu script css
+            json</b></span>
+      </div>
+
+      <div id="script" class="toggle-display-icon" style="display:none;">
+        <label id="context-script-label" class="multi-lang">Content script</label>
+        <div>
+          <button id="content-scriptList-button" class="multi-lang" type="button">
+            Add script url
+          </button>
+        </div>
+        <ol id="content-scriptList" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+        <div>
+          <textarea id="content-scriptEdit" class="multi-lang" name="content_scriptEdit" style="width:100%;height:70px"
+            placeholder="javascript"></textarea>
+        </div>
+        <label id="context-css-label" class="multi-lang">Content css</label>
+        <div>
+          <button id="content-cssList-button" class="multi-lang" type="button">
+            Add css url
+          </button>
+        </div>
+        <ol id="content-cssList" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+        <div>
+          <textarea id="content-cssEdit" class="multi-lang" name="content_cssEdit" style="width:100%;height:70px"
+            placeholder="css"></textarea>
+        </div>
+        <label id="context-json-label" class="multi-lang">Content JSON data</label>
+        <div>
+          <textarea id="content-jsonEdit" class="multi-lang" name="content_jsonEdit" style="width:100%;height:70px"
+            placeholder="json"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <span id="window-toggle-span"><i class="material-icons window-toggle-icon">menu</i><i
+            class="material-icons window-toggle-icon" style="display:none;">menu_open</i></span><span
+          id="toggle-window-span" class="multi-lang"><b>Window</b></span>
+      </div>
+
+      <div id="window" class="toggle-display-icon" style="display:none;">
+        <label id="window-url-label" class="multi-lang">Window url </label>
+        <input id="window-url" name="window_url" class="multi-lang" placeholder="Open window url" style="width:95%;" />
+        <label id="window-type-label" class="multi-lang">Window type</label>
+        <div>
+          <select id="window-type" name="window_type">
+            <option id="window_type_normal" class="multi-lang" value="normal">normal</option>
+            <option id="window_type_popup" class="multi-lang" value="popup">popup</option>
+            <option id="window_type_devtools" class="multi-lang" value="devtools">devtools</option>
+          </select>
+        </div>
+        <div>
+          <label id="window-tabId-label" class="multi-lang">Window tab ID</label>
+        </div>
+        <div>
+          <input type="number" id="window-tabId" class="multi-lang" name="window_tabId" placeholder="integer"
+            style="width:95%;" />
+        </div>
+        <div>
+          <label id="window-topLeft-label" class="multi-lang">Window top left</label>
+        </div>
+        <div>
+          <input type="number" id="window-top" class="multi-lang" name="window_top" placeholder="top"
+            style="width:40%;" />
+          <input type="number" id="window-left" class="multi-lang" name="window_left" placeholder="left"
+            style="width:40%;" />
+        </div>
+        <div>
+          <label id="window-width-label" class="multi-lang">Window width height</label>
+        </div>
+        <div>
+          <input type="number" id="window-width" class="multi-lang" name="window_width" placeholder="width"
+            style="width:40%;" />
+          <input type="number" id="window-height" class="multi-lang" name="window_height" placeholder="height"
+            style="width:40%;" />
+        </div>
+        <label id="window-state-label" class="multi-lang">Window state</label>
+        <div>
+          <select id="window-state" name="window_state">
+            <option id="window_state_normal" class="multi-lang" value="normal">normal</option>
+            <option id="window_state_minimized" class="multi-lang" value="minimized">minimized</option>
+            <option id="window_state_maximized" class="multi-lang" value="maximized">maximized</option>
+            <option id="window_state_fullscreen" class="multi-lang" value="fullscreen">fullscreen</option>
+          </select>
+        </div>
+        <div>
+          <label id="window-forcused-label" class="multi-lang">Focused</label><input type="checkbox" id="window-focused"
+            name="window_focused" checked />
+          <div>
+            <label id="incongnito-window-label" class="multi-lang">Incognito window</label><input type="checkbox"
+              id="window-incognito" name="window_incognito" />
+          </div>
+          <label id="window-opener-label" class="multi-lang">Set self as opener</label><input type="checkbox"
+            id="window-setSelfAsOpener" name="window_setSelfAsOpener" />
+        </div>
+
+        <div>
+          <span id="windowOption-toggle-span"><i class="material-icons windowOption-toggle-icon">menu</i><i
+              class="material-icons windowOption-toggle-icon" style="display:none;">menu_open</i></span><span
+            id="toggle-windowOption-span" class="multi-lang"><b>Window
+              option</b></span>
+        </div>
+
+        <div id="windowOption" class="toggle-display-icon" style="display:none;">
+          <label id="window-parameter-label" class="multi-lang">Add url parameter</label>
+          <div>
+            <label id="duplicate-startup-label" class="multi-lang">Duplicate startup</label><input type="checkbox"
+              id="windowOption-duplicate" name="windowOption_duplicate" />
+          </div>
+          <div>
+            <label id"window-session-label" class="multi-lang">Session id</label><input type="checkbox"
+              id="windowOption-session" name="windowOption_session" />
+          </div>
+          <label id="window-paramList-label" class="multi-lang">parameter list</label>
+          <div>
+            <input id="windowOption-paramList" class="multi-lang" name="windowOption_paramList"
+              placeholder="key:value,key:value" style="width:95%;" /></div>
+        </div>
+
+        <div>
+          <span id="windowContent-toggle-span"><i class="material-icons windowContent-toggle-icon">menu</i><i
+              class="material-icons windowContent-toggle-icon" style="display:none;">menu_open</i></span><span
+            id="toggle-windowScript-span" class="multi-lang"><b>Window
+              script css json</b></span>
+        </div>
+
+        <div id="windowContent" class="toggle-display-icon" style="display:none;">
+          <label id="window-script-label" class="multi-lang">Window script</label>
+          <div>
+            <button id="windowContent-scriptList-button" class="multi-lang" type="button">
+              Add script url
+            </button>
+          </div>
+          <ol id="windowContent-scriptList" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+          <div>
+            <textarea id="windowContent-scriptEdit" class="multi-lang" name="windowContent_scriptEdit"
+              style="width:100%;height:70px" placeholder="javascript"></textarea>
+          </div>
+          <label id="window-css-label" class="multi-lang">Window css</label>
+          <div>
+            <button id="windowContent-cssList-button" class="multi-lang" type="button">
+              Add css url
+            </button>
+          </div>
+          <ol id="windowContent-cssList" class="append-list" style="margin:2px;margin-left:15px;padding:0;
+              "></ol>
+          <div>
+            <textarea id="windowContent-cssEdit" class="multi-lang" name="windowContent_cssEdit"
+              style="width:100%;height:70px" placeholder="css"></textarea>
+          </div>
+          <label id="window-json-label" class="multi-lang">Window JSON data</label>
+          <div>
+            <textarea id="windowContent-jsonEdit" class="multi-lang" name="windowContent_jsonEdit"
+              style="width:100%;height:70px" placeholder="jsom"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span id="tab-toggle-span"><i class="material-icons tab-toggle-icon">menu</i><i
+            class="material-icons tab-toggle-icon" style="display:none;">menu_open</i></span><span id="toggle-tab-span"
+          class="multi-lang"><b>Tab</b></span>
+      </div>
+
+      <div id="tab" class="toggle-display-icon" style="display:none;">
+        <label id="tab-url-label" class="multi-lang">Tab url </label>
+        <input id="tab-url" name="tab_url" class="multi-lang" placeholder="tab url" style="width:95%;" />
+        <label id="tab-windowId-label" class="multi-lang">Window ID</label>
+        <div>
+          <input type="number" id="tab-windowId" name="tab_windowId" class="multi-lang" placeholder="integer"
+            style="width:95%;" />
+        </div>
+        <label id="tab-index-label" class="multi-lang">Tab index</label>
+        <div>
+          <input type="number" id="tab-index" name="tab_index" class="multi-lang" placeholder="integer"
+            style="width:95%;" />
+        </div>
+        <div>
+          <label id="tav-active-label" class="multi-lang">Active</label><input type="checkbox" id="tab-active"
+            name="tab_active" checked />
+          <label id="tab-selected-label" class="multi-lang">Selected</label><input type="checkbox" id="tab-selected"
+            name="tab_selected" />
+          <label id="tab-pinned-label" class="multi-lang">Pinned</label><input type="checkbox" id="tab-pinned"
+            name="tab_pinned" />
+        </div>
+        <label id="tab-opnerId-label" class="multi-lang">Opener tab ID</label>
+        <div>
+          <input type="number" id="tab-openerTabId" name="tab_openerTabId" class="multi-lang" placeholder="integer"
+            style="width:95%;" />
+        </div>
+
+        <div>
+          <span id="tabOption-toggle-span"><i class="material-icons tabOption-toggle-icon">menu</i><i
+              class="material-icons tabOption-toggle-icon" style="display:none;">menu_open</i></span><span
+            id="toggle-tabOption-span" class="multi-lang"><b>Tab option</b></span>
+        </div>
+
+        <div id="tabOption" class="toggle-display-icon" style="display:none;">
+          <label id="tab-paramUrl-label" class="multi-lang">Add url parameter</label>
+          <div>
+            <label id="tab-duplicate-startup-label" class="multi-lang">Duplicate startup</label><input type="checkbox"
+              id="tabOption-duplicate" name="tabOption_duplicate" />
+          </div>
+          <div>
+            <label id="tab-session-label" class="multi-lang">Session id</label><input type="checkbox"
+              id="tabOption-session" name="tabOption_session" />
+          </div>
+          <label id="tab-param-list-label" class="multi-lang">parameter list</label>
+          <div>
+            <input id="tabOption-paramList" name="tabOption_paramList" class="multi-lang"
+              placeholder="key:value,key:value" style="width:95%;" /></div>
+        </div>
+
+        <div>
+          <span id="tabContent-toggle-span"><i class="material-icons tabContent-toggle-icon">menu</i><i
+              class="material-icons tabContent-toggle-icon" style="display:none;">menu_open</i></span><span
+            id="toggle-tabScript-span" class="multi-lang"><b>Tab script css
+              json</b></span>
+        </div>
+
+        <div id="tabContent" class="toggle-display-icon" style="display:none;">
+          <label>Tab script</label>
+          <div>
+            <button id="tabContent-scriptList-button" class="multi-lang" type="button">
+              Add script url
+            </button>
+          </div>
+          <ol id="tabContent-scriptList" class="append-list" style="margin:2px;margin-left:15px;padding:0;"></ol>
+          <div>
+            <textarea id="tabContent-scriptEdit" name="tabContent_scriptEdit" class="multi-lang"
+              style="width:100%;height:70px" placeholder="javascript"></textarea>
+          </div>
+          <label id="tab-css-label" class="multi-lang">Tab css</label>
+          <div>
+            <button id="tabContent-cssList-button" class="multi-lang" type="button">
+              Add css url
+            </button>
+          </div>
+          <ol id="tabContent-cssList" class="append-list" style="margin:2px;margin-left:15px;padding:0;
+              "></ol>
+          <div>
+            <textarea id="tabContent-cssEdit" name="tabContent_cssEdit" class="multi-lang"
+              style="width:100%;height:70px" placeholder="css"></textarea>
+          </div>
+          <label id="tab-json-label" class="multi-lang">Tab JSON data</label>
+          <div>
+            <textarea id="tabContent-jsonEdit" name="tabContent_jsonEdit" class="multi-lang"
+              style="width:100%;height:70px" placeholder="json"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span id="external-toggle-span"><i class="material-icons external-toggle-icon">menu</i><i
+            class="material-icons external-toggle-icon" style="display:none;">menu_open</i><span
+            id="toggle-external-span" class="multi-lang"></span><b>External</b></span>
+      </div>
+
+      <div id="external" class="toggle-display-icon" style="display:none;">
+        <label id="external-id-label" class="multi-lang">External ID</label>
+        <div>
+          <input id="external-id" name="external_id" class="multi-lang" placeholder="External ID" style="width:95%;" />
+        </div>
+        <label id="external-json-lable" class="multi-lang">External JSON data</label>
+        <div>
+          <textarea id="external-jsonEdit" class="multi-lang" name="external_jsonEdit" style="width:100%;height:70px"
+            placeholder="json"></textarea>
+        </div>
+      </div>
+
+      <div>
+        <span id="other-toggle-span"><i class="material-icons other-toggle-icon">menu</i><i
+            class="material-icons other-toggle-icon" style="display:none;">menu_open</i></span><span
+          id="toggle-ather-span" class="multi-lang"><b>Other</b></span>
+      </div>
+
+      <div id="other" class="toggle-display-icon" style="display:none;">
+        <label id="user-site-label" class="multi-lang">URL of your site</label>
+        <input id="your-site-url" name="other_site_url" class="multi-lang" placeholder="URL of your site"
+          style="width:95%;" />
+        <label id="user-banner-label">URL of your site banner image</label>
+        <input id="your-site-baner" name="other_baner_url" class="multi-lang"
+          placeholder="URL of your site banner image" style="width:95%;" />
+      </div>
+      <div style="margin-top:3px">
+        <button id="appry-button" class="multi-lang" type="button">
+          Appry
+        </button>
+        <button id="delete-button" class="multi-lang" type="button">
+          Delete
+        </button>
+        <button id="import-button" class="multi-lang" type="button">
+          import
+        </button>
+        <button id="export-button" class="multi-lang" type="button">
+          export
+        </button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <label>Include child menu in export</label><input type="checkbox" id="export-child" name="export_child" />
+  </div>
+  <footer>
+    <a href="https://junglespaghetti.com/" target="_blank"><img border="0" src="images/janglespaghetti_title.png"
+        style="width:90%;max-width: 300px;" alt="ジャンスパ" /></a>
+  </footer>
+  <script src="menus/menus.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <script src="helper/pageHelper.js"></script>
+  <meta charset="UTF-8">
+  <title>MyExtensions</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="popup/popup.css">
+  <script src="menu_ini.js"></script>
+  <script src="helper/applicationHelper.js"></script>
+  <script src="helper/helper.js"></script>
+</head>
+
+<body>
+  <div>
+    <div style="text-align:center;margin:4px;pedding:2px;">Jungle menu<span id="edit-togle-button"
+        style="float: right;"><span class="material-icons editable-toggle-icon">
+          toggle_off
+        </span><span class="material-icons editable-toggle-icon" style="display:none;">
+          toggle_on
+        </span></span>
+      <span id="header-setting-button" class="material-icons header-setting-button" style="float: right;">
+        settings
+      </span><span id="header-menu-button" class="material-icons header-menu-button" style="float: right;">
+        add
+      </span></div>
+  </div>
+  <div id="menu-list">
+    <ul id="menu-list-ul" class="draggable_list draggable-flag">
+    </ul>
+  </div>
+
+  <script src="popup/popup.js"></script>
+</body>
+
+</html>
