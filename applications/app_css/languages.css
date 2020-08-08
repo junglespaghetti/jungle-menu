@@ -1,0 +1,16 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#main-contens {
+  flex: 1;
+}
+
+footer{
+ margin-top:5px;
+ height: auto;
+}
