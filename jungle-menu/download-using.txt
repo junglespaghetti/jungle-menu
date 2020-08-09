@@ -1,20 +1,20 @@
 
 When directly downloading and using
 
-1. Download this folder and extract Zip.
+1. Download and extract Zip.
 2. Select the extension from the three-point reader in the upper right corner of chrome.
 3. Turn on developer mode in the upper right.
 4. Load unpackaged extensions.
-5. Select the folder you just unpacked.
+5. Select this folder from the one you just unpacked.
 
-Now you can actually try out this extension.
+Now you can actually try out this extension
 
 直接ダウンロードして使う場合
 
-１．このフォルダーをダウンロードして、Zipを展開。
+１．ダウンロードしてZipを展開。
 ２．chromeの右上の三点リーダーから拡張機能を選択。
 ３．右上のデベロッパーモードをオンにする。
 ４．パッケージ化されていない拡張機能を読み込む。
-５．先程展開したフォルダーを選択する。
+５．先程展開した中からこのフォルダーを選択する。
 
 これで実際にこの拡張機能を試す事ができます。
