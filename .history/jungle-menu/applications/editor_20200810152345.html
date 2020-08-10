@@ -11,7 +11,7 @@
   <script>
     var require = {
       paths: {
-        'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs'
+        'vs': '../node_modules/monaco-editor/dev/vs'
       },
       'vs/nls': {
         availableLanguages: {
@@ -24,30 +24,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.nls.min.js">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/editor/editor.main.nls.ja.min.js">
-  </script>
-  <script>
-    var editor1;
-    var editor2;
-    var session;
-    var text = [
-      'function x() {',
-      '\tconsole.log("Hello world!");',
-      '}'
-    ].join('\n');
-    /*  require.config({ 
-            paths: { 'vs': '../node_modules/monaco-editor/dev/vs' },
-            'vs/nls' : {
-                availableLanguages: {
-                    '*': 'ja'
-                }
-            }
-        });
-    */
-    session = monaco.editor.createModel(text, 'javascript');
-    editor1 = monaco.editor.create(document.getElementById('container1'), {});
-    // editor2 = monaco.editor.create(document.getElementById('container2'), {});
-    editor1.setModel(session);
-    // editor2.setModel(session);
   </script>
   <script src="helper/applicationHelper.js"></script>
   <script src="helper/helper.js"></script>
@@ -140,7 +116,7 @@
             Tab</span></label>
       </div>
       <div id="center-main">
-        <div id="container1" style="width:100%;height:500px;border:1px solid grey"></div>
+        <textarea id="content-cssEdit" name="content_cssEdit" placeholder="write css"></textarea>
       </div>
       <div id="right-side"></div>
     </div>
